@@ -33,6 +33,13 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
 #app {
+  background: rgb(61,83,61);
+  height: 100vh;
+
+  border-radius: 6px 6px 0 0;
 }
 </style>
