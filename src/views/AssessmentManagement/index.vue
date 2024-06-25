@@ -163,6 +163,7 @@ export default {
       .person {
         display: flex;
         justify-content: space-between;
+        //align-items: center;
         padding: 0 20px;
         width: 410px;
         height: 48px;
@@ -172,20 +173,21 @@ export default {
 
         .person-left {
           display: flex;
+          align-items: center;
           color: #000d3e;
 
           .circle {
+            //display: inline-block;
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            border: 2px solid #416e41;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            background: rgba(65, 110, 65, 1);
             border-radius: 50%;
-            background-color: white;
-            font-size: 8px;
-            color: #fff;
-            background: #416e41;
-            margin-top: 16px;
-            margin-right: 6px;
+            color: white;
+            margin-right: 10px;
           }
 
           .word {
@@ -218,8 +220,8 @@ export default {
 
       .content1,
       .content2 {
-        width: 400px;
-        height: 200px;
+        width: 500px;
+        height: 230px;
         background: #036eb4;
         border-radius: 10px;
         margin-right: 20px;
