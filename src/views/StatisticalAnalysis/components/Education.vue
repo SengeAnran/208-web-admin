@@ -2,7 +2,7 @@
 <template>
 <div class="education">
   <div class="title">
-    学历结构
+      性别结构
   </div>
   <div class="pie-box">
     <PieChart  title="" class="pie"/>

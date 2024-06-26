@@ -27,7 +27,7 @@
             class="word-content"
           >
             <el-option
-              v-for="(item, index) in options"
+              v-for="(item, index) in options2"
               :key="index"
               :label="item.label"
               :value="item.value"
@@ -35,7 +35,7 @@
           </el-select>
         </div>
         <div class="left-content">
-          <div class="word-title-list">人员列表</div>
+          <div class="word-title-list">人员排行</div>
           <div
             v-for="(item, index) in personList"
             :key="item.id"
@@ -45,7 +45,8 @@
               <span class="circle">0{{ index + 1 }}</span>
               <span class="word">{{ item.name }}</span>
             </div>
-            <span class="person-right">{{ item.score }}分</span>
+            <span class="person-right">{{ item.score }}个</span>
+            <span class="person-right">{{ item.value }}</span>
           </div>
         </div>
       </div>
@@ -53,8 +54,8 @@
         <div class="right-title">考核科目：仰卧起坐</div>
         <div class="right-content">
           <div class="content1">
-            <div class="name">张鸣</div>
-            <div class="word">部职别：2师2军团2处3班</div>
+            <div class="name">陈煜文</div>
+            <div class="word">部职别：2师2军团2处4班</div>
             <div class="word">身份证：511011196504254621</div>
             <div class="word">性别：男</div>
             <div class="word">类别：一类人员</div>
@@ -62,16 +63,16 @@
           <div class="content2">
             <div class="content2-title">合格指标：50</div>
             <div>
-              <span class="words">有效个数：58</span>
-              <span class="word">无效个数：5</span>
+              <span class="words">有效个数：44</span>
+              <span class="word">无效个数：15</span>
             </div>
             <div class="content2-foot">
               <div class="time">时间：180秒</div>
-              <el-button class="btn">通过</el-button>
+              <el-button class="btn" type="warning">未通过</el-button>
             </div>
           </div>
         </div>
-        <img src="@/assets/show.png" class="img" alt />
+        <img src="@/assets/show/img.png" class="img" alt />
       </div>
     </div>
   </div>
@@ -85,39 +86,62 @@ export default {
       venue: 1,
       options: [
         {
-          label: "1",
+          label: "仰卧起坐",
           value: 1
         },
         {
-          label: "2",
+          label: "3000米跑",
           value: 2
+        },
+        {
+          label: "蛇形跑",
+          value: 3
+        }
+      ],
+      options2: [
+        {
+          label: "202210体能考",
+          value: 1
+        },
+        {
+          label: "202211体能考",
+          value: 2
+        },
+        {
+          label: "202212体能考",
+          value: 3
         }
       ],
       personList: [
         {
           id: "1",
-          name: "张小爱",
-          score: 100
+          name: "王光雷",
+          score: 88,
+          value: 15,
         },
         {
           id: "2",
           name: "李晓华",
-          score: 96
+          score: 82,
+          value:  14.3,
         },
         {
           id: "3",
-          name: "张小爱",
-          score: 86
+          name: "张春阳",
+          score: 73,
+          value:  12.8,
         },
         {
           id: "4",
-          name: "李晓华",
-          score: 80
+          name: "郑宇",
+          score: 69,
+          value: 12,
         },
         {
           id: "5",
-          name: "张小爱",
-          score: 78
+          name: "铁键平",
+          score: 68,
+          value:  12,
         }
       ]
     };
@@ -265,7 +289,7 @@ export default {
           }
 
           .btn {
-            background: #00945a;
+            background: #940016;
             color: #fff;
             width: 120px;
             height: 70px;

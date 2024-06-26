@@ -42,7 +42,7 @@ export default {
         },
         {
             label: '系统管理',
-          path: '/2',
+          path: '/SystemManager',
         },
         // {
         //   label: '关于我们',
@@ -74,11 +74,11 @@ export default {
 
 <style scoped lang="scss">
 .header-bar {
-  z-index: 2000;
+  //z-index: 2000;
   width: 100%;
   background-color: white;
-  position: fixed;
-  top: 0;
+  //position: fixed;
+  //top: 0;
   font-size: 20px;
   //padding: 0 32px;
   height: 71px;

@@ -27,6 +27,14 @@ export const routes = [
         },
         component: () => import("../views/AssessmentManagement"),
     },
+    {
+        path: "/SystemManager",
+        name: "SystemManager",
+        meta: {
+            index: 0,
+        },
+        component: () => import("../views/SystemManager"),
+    },
     // {
     //     path: "/intelligentMatrix/detail",
     //     name: "intelligentMatrixDetail",

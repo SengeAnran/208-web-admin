@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Layout/>
-    <fit-screen />
+    <fit-screen displayType="centerFull" />
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
 }
 #app {
   background: rgb(61,83,61);
-  height: 100vh;
+  height: 100%;
 
   border-radius: 6px 6px 0 0;
 }

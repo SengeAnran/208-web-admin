@@ -5,11 +5,18 @@
     {{title}}
   </div>
   <div class="sort-content" :style="{height: contentH}">
+    <div v-if="titles" class="sort-item"   >
+
+      <div class="name">{{titles[0]}}</div>
+      <div v-if="titles.length === 3" class="time">{{titles[2]}}</div>
+      <div class="value">{{titles[1]}}</div>
+    </div>
     <div class="sort-item" v-for="(item, index) in listData" :key="index" >
 
       <div class="name">
         <span class="index">{{index + 1}}</span>
         {{item.name}}</div>
+      <div v-if="item.time" class="time">{{item.time}}</div>
       <div class="value">{{item.value}}</div>
     </div>
   </div>
@@ -31,44 +38,26 @@ export default {
       default: '65px'
     },
     title: String,
+    titles: Array,
+    listData: {
+      type: Array,
+      default: () => {
+        return [
+          {
+            name: '张爱',
+            value: '290'
+          },
+          {
+            name: '王雷',
+            value: '290'
+          },
+        ]
+      }
+    },
   },
   name: "sort",
   data() {
     return {
-      listData: [
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        {
-          name: '张小爱',
-          value: '100'
-        },
-        // {
-        //   name: '张小爱',
-        //   value: '100'
-        // },
-      ]
     }
   },
   computed: {
@@ -105,6 +94,9 @@ export default {
 
       border-radius: 8px;
       background: rgba(248, 249, 250, 1);
+      .name {
+        min-width: 90px;
+      }
       .index {
         display: inline-block;
         font-size: 12px;

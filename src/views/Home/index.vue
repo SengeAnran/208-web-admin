@@ -57,8 +57,8 @@ export default {
 <style lang="scss" scoped>
 .contain {
   width: 100%;
-  height: calc(100vh - 432px);
-  background: #144c14;
+  height: calc(100% - 71px);
+  //background: #144c14;
   display: flex;
   padding: 20px 30px;
   box-sizing: border-box;
