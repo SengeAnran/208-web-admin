@@ -1,3 +1,4 @@
+
 // 小标题
 .small-title {
   font-size: 18px;
@@ -36,4 +37,77 @@
 .green {
   // background: #00ce79;
   background: #1e913f;
+}
+.container-box {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.page {
+  margin-top: 54px;
+  padding: 45px 40px 36px;
+  border-radius: 12px;
+  background: #FFF;
+}
+.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.inline-flex {
+  display: inline-flex !important;
+  flex-wrap: wrap;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
+  .label {
+    white-space: nowrap;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+// 单行多余省略
+.one-line-text {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:  ellipsis;
+}
+.max-width-300{
+  max-width: 300px;
+}
+// 富文本
+//.editor {
+//  width: 100%;
+//  ::v-deep .ql-editor {
+//    min-height: 200px;
+//  }
+//}
+.base-item-box {
+  border: 1px solid #DEE0E3;
+  border-radius: 4px;
+  padding: 19px 20px 15px;
+  font-size: 16px;
+  line-height: 26px;
+
+}
+.base-mini-title {
+  color: #1F2329;
+  font-family: "PingFang SC";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 110% */
+  margin-bottom: 30px;
 }

@@ -16,6 +16,8 @@ export default {
 <style scoped lang="scss">
 .layout {
   //margin-top: 71px;
+  //background-color: #F5F6F7;
+  padding-top: 56px;
   height: 100%;
 }
 </style>

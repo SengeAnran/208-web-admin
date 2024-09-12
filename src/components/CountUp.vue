@@ -1,5 +1,5 @@
 <template>
-  <span class="count-up">
+  <span class="count-up" :style="{fontSize: fontsize, fontWeight:fontWeight}">
     <span class="num-1">{{ placeholder }}</span>
     <span class="num-2" ref="roll_num"></span>
   </span>
@@ -14,6 +14,14 @@ export default {
     num: {
       type: Number,
       default: 0,
+    },
+    fontsize: {
+      type: String,
+      default: '28px',
+    },
+    fontWeight: {
+      type: Number,
+      default: 500,
     },
   },
   mounted() {
@@ -71,7 +79,7 @@ export default {
 <style lang="scss" scoped>
 .count-up {
   position: relative;
-  font-family: "DIN Alternate";
+  font-family: "DINCond-Black";
   // display: flex;
   // align-items: center;
   .num-1 {

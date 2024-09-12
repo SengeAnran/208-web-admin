@@ -9,7 +9,8 @@ module.exports = {
         open: true,
         proxy: {
             '/api': { // 测试环境
-                target: 'http://172.16.24.248:8480', //
+                target: 'http://222.128.6.162:28085/', //
+                // target: 'http://192.168.43.182:8085/', //
                 changeOrange: true,
                 pathRewrite: { '^/api': '' },
             },

@@ -5,7 +5,7 @@ import config from "../utils/config";
 // import {recordUserInfo, recordPath} from '../utils/monitoring';
 // import area from "../utils/areaCode";
 // import axios from "axios";
-// import store from '../store/index'
+import store from '../store/index'
 import {routes} from './routeList'
 
 Vue.use(VueRouter)
@@ -73,6 +73,11 @@ router.beforeEach((to, from, next) => {
     //     }
     //     return next();
     // }
+    if (to.meta.index || to.meta.index === 0) {
+        store.commit('SET_ACTIVE_NAV_INDEX', to.meta.index)
+    } else {
+        store.commit('SET_ACTIVE_NAV_INDEX', '')
+    }
     return next();
 
 

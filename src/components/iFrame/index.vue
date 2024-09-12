@@ -1,5 +1,5 @@
 <template>
-  <div class="if-box" v-loading="loading" >
+  <div class="if-box" v-loading="loading"  :style="{height: height}">
     <iframe
       :src="src"
       frameborder="no"
@@ -18,17 +18,18 @@ export default {
   },
   data() {
     return {
-      height: document.documentElement.clientHeight - 94.5 + "px;",
+      height: 'calc(100vh - 60px)',
       loading: true,
     };
   },
-  mounted: function () {
+  mounted() {
+    this.height = document.documentElement.clientHeight - 56 + "px;"
     setTimeout(() => {
       this.loading = false;
     }, 300);
     const that = this;
     window.onresize = function temp() {
-      that.height = document.documentElement.clientHeight - 94.5 + "px;";
+      that.height = document.documentElement.clientHeight - 56 + "px;";
     };
   }
 };
@@ -36,5 +37,6 @@ export default {
 <style scoped lang="scss">
 .if-box {
   height: 100%;
+  background: white;
 }
 </style>

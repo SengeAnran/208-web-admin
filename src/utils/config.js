@@ -1,11 +1,11 @@
 const proConfig = {
-  apiHost: "/api/screen",
-  routerBase: "/screen",
+  apiHost: "",
+  routerBase: "/",
   isLogin: true,
 };
 
 const devConfig = {
-  apiHost: "/api",
+  apiHost: "",
   routerBase: "/",
   isLogin: false,
 };

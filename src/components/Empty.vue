@@ -21,6 +21,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .empty-wrp {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -30,9 +31,11 @@ export default {
   transform-origin: top left;
 
   .txt {
+    position: absolute;
     color: #5f7691;
     font-size: 14px;
-    margin-top: 8px;
+    //margin-top: 8px;
+    bottom: 30px;
     letter-spacing: 0.5px;
   }
 }

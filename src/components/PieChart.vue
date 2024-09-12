@@ -18,7 +18,7 @@ export default {
     },
     color: {
       type: Array,
-      default: () => ['#5B9DFE', '#03C3FF', '#00DCA6', '#FFD6AF','#FF9E9F'],
+      default: () => ['#AEE9A7', '#EBC4FD', '#0A9FFD', '#C6E9FF','#ADC6FF', '#F9FEC5'],
     },
     total: {
       type: Number,
@@ -37,11 +37,15 @@ export default {
     },
     center: {
       type: Array,
-      default: () => ['20%', 'center'],
+      default: () => ['50%', 'center'],
     },
     isPercent: {
       type: Boolean,
       default: true,
+    },
+    hideLegend: {
+      type: Boolean,
+      default: false,
     },
     unit: {
       type: String,
@@ -88,6 +92,7 @@ export default {
       return {
         color: this.color,
         legend: {
+          show: !this.hideLegend,
           icon: 'circle',
           itemWidth: 8,
           itemHeight: 8,
@@ -138,22 +143,22 @@ export default {
         },
         title: {
           show: this.showMinTitle,
-          text: `{a|${this.total}}\n {b|${this.minTitle}}`,
-          top: '35%',
+          text: `{a|${this.minTitle}}\n {b|${this.total}}`,
+          top: '40%',
           textAlign: 'center',
-          left: '18.5%',
+          left: '49%',
           textStyle: {
-            color: '#fff',
+            color: '#3370FF',
             rich: {
               a: {
-                fontSize: 18,
+                fontSize: 14,
                 fontWeight: 'bold',
                 fontFamily: 'Microsoft YaHei',
-                padding: [0, 0, 0, 5],
+                padding: [0, 0, 10, 5],
               },
               b: {
-                fontSize: 12,
-                fontFamily: 'Microsoft YaHei',
+                fontSize: 36,
+                fontFamily: 'Bebas Neue',
                 // padding: [0, 0, 0, 10],
               },
             },
@@ -162,12 +167,12 @@ export default {
         series: [
           {
             type: 'pie',
-            radius: ['44%', '58%'],
+            radius: ['44%', '78%'],
             center: this.center,
             label: {
-              position: 'center',
-              formatter: this.title,
-              color: '#FEFEFE',
+              position: 'outside',
+              formatter: `{b} {d}%`,
+              color: 'rgba(0, 0, 0, 1)',
               fontSize: 14,
               lineHeight: 20,
               verticalAlign: 'bottom',
@@ -176,41 +181,41 @@ export default {
             },
             data: this.list,
           },
-          {
-            type: 'pie',
-            center: this.center,
-            radius: ['39%', '64%'],
-            itemStyle: {
-              color: {
-                type: 'linear',
-                x: 0,
-                y: 0,
-                x2: 0,
-                y2: 1,
-                colorStops: [
-                  {
-                    offset: 0,
-                    color: '#3551A45c',
-                  },
-                  {
-                    offset: 0.5,
-                    color: '#3D8EC45c',
-                  },
-                  {
-                    offset: 1,
-                    color: '#5ECDB05c',
-                  },
-                ],
-                global: false,
-              },
-            },
-            scale: false,
-            label: {
-              show: false,
-            },
-            data: [1],
-            z: -1,
-          },
+          // {
+          //   type: 'pie',
+          //   center: this.center,
+          //   radius: ['39%', '64%'],
+          //   itemStyle: {
+          //     color: {
+          //       type: 'linear',
+          //       x: 0,
+          //       y: 0,
+          //       x2: 0,
+          //       y2: 1,
+          //       colorStops: [
+          //         {
+          //           offset: 0,
+          //           color: '#3551A45c',
+          //         },
+          //         {
+          //           offset: 0.5,
+          //           color: '#3D8EC45c',
+          //         },
+          //         {
+          //           offset: 1,
+          //           color: '#5ECDB05c',
+          //         },
+          //       ],
+          //       global: false,
+          //     },
+          //   },
+          //   scale: false,
+          //   label: {
+          //     show: false,
+          //   },
+          //   data: [1],
+          //   z: -1,
+          // },
         ],
       };
     },

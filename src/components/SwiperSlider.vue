@@ -15,7 +15,7 @@ export default {
   mounted() {
     if (this.$parent.options.slideClass) {
       this.slideClass = this.$parent.options.slideClass;
-      console.log(this.slideClass);
+      // console.log(this.slideClass);
     }
   },
 };

@@ -3,6 +3,7 @@
     <div :class="defaultSwiperClasses.wrapperClass">
       <slot></slot>
     </div>
+    <slot name="btn"></slot>
   </div>
 </template>
 <script>
