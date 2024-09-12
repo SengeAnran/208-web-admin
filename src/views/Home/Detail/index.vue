@@ -27,7 +27,7 @@
             </div>
 
             <div v-loading="loading" class="patent-list">
-              <div class="patent-list-item"  @click="goDetail(item2)" v-for="(item2, index2) in item.data.patentList"
+              <div class="patent-list-item" :class="{activeOne: item2.active}"  @click="goDetail(item2)" v-for="(item2, index2) in item.data.patentList"
                    :key="index2">
                 {{ item2.name }}
               </div>
@@ -38,17 +38,17 @@
           </div>
         </div>
         <!--滑动-->
-        <div class="swiper-box">
+        <div class="swiper-box" @click="showBox">
           <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slider v-for="(item, index) in imgList" :key="index">
               <img :src="item.imgUrl" alt="">
             </swiper-slider>
             <template #btn>
 
-              <div class="right swiper-button-right"></div>
+              <div @click="switchShow('add')" class="right swiper-button-right"></div>
             </template>
           </swiper>
-          <div class="left swiper-button-left"></div>
+          <div @click="switchShow('reduce')" class="left swiper-button-left"></div>
         </div>
       </div>
 
@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       loading: false,
+      nowShowIndex: 0,
       boxList: [
         {
           position: {
@@ -124,8 +125,8 @@ export default {
           },
           bgImg: null,
           data: {
-            name: '推进器',
-            key: 'booster',
+            name: '可动喷嘴',
+            key: 'nozzle',
             patentList: [],
             showBox: false,
           }
@@ -173,6 +174,24 @@ export default {
     this.mySwiper = this.$refs.mySwiper;
   },
   methods: {
+    switchShow(type) {
+      this.boxList[2].data.patentList.forEach(i => {
+        i.active = false;
+      })
+      if (type === 'add'){
+        this.nowShowIndex = (this.nowShowIndex + 1)%3;
+
+      } else {
+        this.nowShowIndex =( this.nowShowIndex - 1) === -1?  2: (this.nowShowIndex - 1);
+      }
+      if (this.boxList[2].data.patentList.length > 0) {
+        this.boxList[2].data.patentList[this.nowShowIndex].active = true;
+      }
+
+    },
+    showBox() {
+      this.boxList[2].data.showBox = true;
+    },
     goListPage(name) {
       this.$router.push({
         path: '/EquipmentTechnology/list',
@@ -188,6 +207,7 @@ export default {
           return {
             ...i,
             name: i.titleC,
+            active: false,
           }
         })
         this.loading = false;
@@ -197,6 +217,7 @@ export default {
           return {
             ...i,
             name: i.titleC,
+            active: false,
           }
         })
         this.loading = false;
@@ -206,8 +227,10 @@ export default {
           return {
             ...i,
             name: i.titleC,
+            active: false,
           }
         })
+        this.boxList[2].data.patentList[0].active = true;
         this.loading = false;
       })
     },
@@ -347,7 +370,10 @@ export default {
             font-size: 16px;
             line-height: 16px;
             text-decoration: underline;
-
+            color: #000;
+            &.activeOne {
+              color: #0A9FFD;
+            }
           }
         }
       }
