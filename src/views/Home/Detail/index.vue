@@ -44,11 +44,10 @@
               <img :src="item.imgUrl" alt="">
             </swiper-slider>
             <template #btn>
-
-              <div @click="switchShow('add')" class="right swiper-button-right"></div>
+              <div  class="right swiper-button-right"></div>
             </template>
           </swiper>
-          <div @click="switchShow('reduce')" class="left swiper-button-left"></div>
+          <div class="left swiper-button-left"></div>
         </div>
       </div>
 
@@ -172,15 +171,26 @@ export default {
   },
   mounted() {
     this.mySwiper = this.$refs.mySwiper;
+    this.init();
   },
   methods: {
+    init() {
+      const left = document.querySelector('.swiper-button-left');
+      const right = document.querySelector('.swiper-button-right');
+      // left.onclick = () => this.switchShow('reduce');
+      // right.onclick = () => this.switchShow('add');
+      left.addEventListener('click', () => this.switchShow('reduce'), true);
+      right.addEventListener('click', () => this.switchShow('add'), true);
+    },
     switchShow(type) {
+      if (!this.boxList[2].data.showBox) {
+        this.boxList[2].data.showBox = true;
+      }
       this.boxList[2].data.patentList.forEach(i => {
         i.active = false;
       })
       if (type === 'add'){
         this.nowShowIndex = (this.nowShowIndex + 1)%3;
-
       } else {
         this.nowShowIndex =( this.nowShowIndex - 1) === -1?  2: (this.nowShowIndex - 1);
       }
@@ -189,8 +199,13 @@ export default {
       }
 
     },
-    showBox() {
+    showBox(e) {
+      e.stopPropagation();
       this.boxList[2].data.showBox = true;
+      // this.nowShowIndex = 0;
+      // if (this.boxList[2].data.patentList.length > 0) {
+      //   this.boxList[2].data.patentList[this.nowShowIndex].active = true;
+      // }
     },
     goListPage(name) {
       this.$router.push({

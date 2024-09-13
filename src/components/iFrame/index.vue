@@ -36,7 +36,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .if-box {
-  height: 100%;
+  height: calc(100vh - 61px);
   background: white;
 }
 </style>

@@ -53,11 +53,9 @@
 <script>
 import list from './components/list.vue'
 import { searchDocs} from "@/api/home";
-// import {postChat} from "@/api/fatch";
 import AddSpecialReport from "@/views/Home/components/addSpecialReport.vue";
 import addDeepSpecialReport from "@/views/Home/components/addDeepSpecialReport.vue";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
-// import store from "@/store";
 import {mapGetters, mapMutations} from "vuex";
 import {addOne} from "@/api/DeepAnalysis";
 export default {
@@ -80,28 +78,7 @@ export default {
       // selectItems: [],
       resStr: '航天行业最近比较热门的专利包括“特种超五类电缆结构“、“超高精导轨型材生产方法"、”双超卫星平台解耦控制方法”等。"特种超五类电缆结构“由湖南华菱线缆股份有限公司申报，”超高精导轨型材生产方法“由西南铝业集团有限公司申报。"双超卫星平台解耦控制方法“由航天科技集团八院509所申报，获得了中国专利金奖。它的创新之处在于提出了双六自由度全解耦控制方法，显著提升了卫星姿态控制水平，使得遥感卫星的拍照更加稳定、准确。具体来说，这项技术解决了传统遥感卫星上平台和载荷固连导致微振动直接影响载荷姿态控制精度的问题，这项技术的成功应用，不仅提升了遥感卫星的性能，还为其在高分辨率对地遥感、高精度空间探测等领域的应用提供了新的可能性,实现了低成本、高性能、高效能的发展目标。(智能回答示例，列举专利+申报人+专利简要解析)',
       showStr:'',
-      messages: [
-        // {
-        //   content: '最',
-        //   showContent: '最',
-        // },
-        // {
-        //   content: '航天',
-        //   showContent: '航天',
-        // },
-        // {
-        //   content: '行业',
-        //   showContent: '行业',
-        // },
-        // {
-        //   content: '最近',
-        //   showContent: '最近',
-        // },
-        // {
-        //   content: '比较热门',
-        //   showContent: '比较\n热门',
-        // },
-      ],
+      messages: [],
       addMethod: addOne,
       evtSource: null,
     }
