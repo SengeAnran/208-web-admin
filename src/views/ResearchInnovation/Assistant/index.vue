@@ -1,10 +1,10 @@
 <template>
   <div class="assistant container-box">
-    <el-button-group>
-      <el-button v-for="(item,index) in btnList" :key="index" :class="{ 'el-button--primary':activeIndex === index}"
-                 @click="changeActive(index)">{{ item }}
-      </el-button>
-    </el-button-group>
+<!--    <el-button-group>-->
+<!--      <el-button v-for="(item,index) in btnList" :key="index" :class="{ 'el-button&#45;&#45;primary':activeIndex === index}"-->
+<!--                 @click="changeActive(index)">{{ item }}-->
+<!--      </el-button>-->
+<!--    </el-button-group>-->
     <!--  消息问道记录-->
     <div class="chat-list" ref="container">
       <div class="chat-list-item" v-for="(item,index) in chatList" :key="index">
@@ -83,7 +83,7 @@ export default {
       loading: false,
       activeIndex: 0,
       btnList: ['RAG对话', '多功能对话'],
-      dialog_type: 'rag', // general： 通用对话 rag：让对话
+      dialog_type: '', // general： 通用对话 rag：让对话
       current_input: '', // 提问
       history: [],
       chatList: [
@@ -114,7 +114,7 @@ export default {
   },
   mounted() {
     this.container = this.$refs.container;
-    console.log(this.container)
+    // console.log(this.container)
   },
   methods: {
     //  切换对话类型
@@ -123,7 +123,8 @@ export default {
         return
       }
       this.activeIndex = index;
-      this.dialog_type = index ? 'general' : 'rag';
+      this.dialog_type = '';
+      // this.dialog_type = index ? 'general' : 'rag';
       this.chatList = [];
       this.history = [];
     },
@@ -142,7 +143,7 @@ export default {
     },
     // 提问
     async uploadQuery(query) {
-      console.log(query, this.current_input)
+      // console.log(query, this.current_input)
       if (this.current_input === '' && !query) {
         return this.$message.warning('请输入搜索内容');
       }
@@ -150,14 +151,15 @@ export default {
       const history = this.history;
       const data = {
         current_input: (query ? query : this.current_input),
-        dialog_type: this.dialog_type, // 对话类型
+        // dialog_type: this.dialog_type, // 对话类型
+        dialog_type: '', // 对话类型
         history: history,
       }
       this.chatList.push( {
         type: 'question',
         content:  (query? query : this.current_input),
         history: [],
-        time: moment().format('yyyy-M-D HH:mm:ss'),
+        time: moment().format('yyyy-MM-DD HH:mm:ss'),
       })
       this.current_input ='';
 
@@ -190,7 +192,7 @@ export default {
             content: '',
             messages: [],
             time: '',
-            showReferences: true,
+            showReferences: false,
             references: []
           })
         },
@@ -200,7 +202,7 @@ export default {
             // 进行连接正常的操作流程
             const str = msg.data.replace('data:', '');
             let result = JSON.parse(str);
-            console.log(result);
+            // console.log(result);
             const currentObj = that.chatList[that.chatList.length -1]; // 当前聊天数组元素对象
             //  返回时间和相关文档
             if ( result.complete_time) {
@@ -240,7 +242,7 @@ export default {
       setTimeout(() => {
         showObj.messages[index].showContent += resStr.charAt(showObj.messages[index].showContent.length);
         this.showResStr(resStr, index);
-      },80)
+      },50)
     },
     // 滚动到底部
     scrollToBottom() {
@@ -367,6 +369,7 @@ export default {
         }
 
         .res-text {
+          white-space: pre-wrap;
           width: 949px;
           color: #000;
           font-family: "PingFang SC";
